@@ -1,0 +1,47 @@
+namespace Dymchenko
+{
+    class Program
+    {
+         static void Main()
+         {
+             Console.Write("Podaj rozmiar tablicy: ");
+             string wejście = Console.ReadLine();
+
+             if (int.TryParse(wejście, out int rozmiarTablicy) && rozmiarTablicy > 0) //Metoda TryParse sprawdza czy ciąg znaków jest liczbą, trzeba pomóc zmiennej out//
+             {
+                 int[] tab1 = generujTablice(rozmiarTablicy);
+                 wyswietlićTablice(tab1);
+             }
+             else
+             {
+                 Console.WriteLine("Podano niepoprawny rozmiar tablicy");
+             }
+
+         }
+
+         static int[] generujTablice(int b)   //int b jest rozmiarem, int a jest zakresem wartośći//
+         {
+             int a = b * 5;
+             int[] tab1 = new int[b];
+
+             Random random = new Random();
+
+             for (int i = 0; i < b; i++)
+             {
+                 tab1[i] = random.Next(1, a + 1);
+             }
+             return tab1;
+         }
+
+         static void wyswietlićTablice(int[] tab1)
+         {
+             Console.WriteLine("Wygenerowana tablica:");
+             foreach (var element in tab1)
+             {
+                 Console.Write($"{element} ");
+             }
+
+             Console.ReadKey(true);
+         }
+}
+
